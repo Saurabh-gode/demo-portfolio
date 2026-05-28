@@ -84,7 +84,7 @@ export const carouselSlides = [
     caption: "Unhurried consultations with your physician",
   },
   {
-    src: "https://images.unsplash.com/photo-1631217868264-e5b1b9d8b8a0?w=1600&q=80",
+    src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80",
     alt: "Medical professional in clinic",
     title: "Evidence-based medicine",
     caption: "Treatment guided by the latest clinical standards",
@@ -138,28 +138,28 @@ export const galleryImages = [
     title: "Reception",
   },
   {
-    src: "https://images.unsplash.com/photo-1516549655169-002e2a8b8352?w=800&q=80",
-    alt: "Consultation room",
+    src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+    alt: "Doctor consulting with a patient",
     title: "Consultation suite",
   },
   {
-    src: "https://images.unsplash.com/photo-1581595220892-b0739db3f5e2?w=800&q=80",
-    alt: "Medical equipment",
+    src: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80",
+    alt: "Medical laboratory equipment",
     title: "Diagnostics",
   },
   {
-    src: "https://images.unsplash.com/photo-1579684385127-1ef15d94a2d0?w=800&q=80",
-    alt: "Healthcare team",
+    src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
+    alt: "Healthcare team in discussion",
     title: "Our team",
   },
   {
-    src: "https://images.unsplash.com/photo-1586773866626-3e548cf7f124?w=800&q=80",
-    alt: "Waiting area",
+    src: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=800&q=80",
+    alt: "Patient in consultation",
     title: "Patient lounge",
   },
   {
-    src: "https://images.unsplash.com/photo-1551076805-e186903f4a0f?w=800&q=80",
-    alt: "Modern clinic hallway",
+    src: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80",
+    alt: "Physician in clinical setting",
     title: "Facilities",
   },
 ] as const;

@@ -182,6 +182,11 @@ main {
   padding-top: 0;
 }
 
+.card{
+  width: 100%;
+  height: 100%;
+}
+
 .card__title {
   margin: 0 0 var(--space-lg);
   font-size: 1.125rem;
