@@ -133,9 +133,14 @@ export const about = {
 
 export const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
-    alt: "Clinic reception area",
-    title: "Reception",
+    src: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80",
+    alt: "Physician in clinical setting",
+    title: "Facilities",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=800&q=80",
+    alt: "Patient in consultation",
+    title: "Patient lounge",
   },
   {
     src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
@@ -148,19 +153,14 @@ export const galleryImages = [
     title: "Diagnostics",
   },
   {
+    src: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
+    alt: "Clinic reception area",
+    title: "Reception",
+  },
+  {
     src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
     alt: "Healthcare team in discussion",
     title: "Our team",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=800&q=80",
-    alt: "Patient in consultation",
-    title: "Patient lounge",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80",
-    alt: "Physician in clinical setting",
-    title: "Facilities",
   },
 ] as const;
 

@@ -87,7 +87,7 @@
   box-sizing: border-box;
 }
 
-html {
+html[data-scroll-behavior="smooth"] {
   scroll-behavior: smooth;
 }
 
@@ -1022,43 +1022,100 @@ main {
 }
 
 /* ─── Gallery ─── */
-.gallery-grid {
-  display: grid;
-  gap: var(--space-md);
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+/* ─── Unsplash Masonry Gallery ─── */
+.masonry-grid {
+  column-count: 1;
+  column-gap: var(--space-md);
+  width: 100%;
 }
 
-.gallery-item {
+/* Tablet (2 columns) */
+@media (min-width: 48rem) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+/* Desktop (3 columns) */
+@media (min-width: 64rem) {
+  .masonry-grid {
+    column-count: 3;
+  }
+}
+
+.masonry-item {
+  /* Prevents an image from being split across two columns */
+  break-inside: avoid;
+  margin-bottom: var(--space-md);
+
   position: relative;
-  border-radius: var(--radius-lg);
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  /* Unsplash uses very small border-radiuses */
   overflow: hidden;
-  aspect-ratio: 4 / 3;
-  cursor: pointer;
-  border: 1px solid var(--color-border);
+  cursor: zoom-in;
+  /* Authentic Unsplash interaction */
+  background: var(--color-bg-elevated);
+  border: none;
   padding: 0;
-  background: var(--color-surface);
-  box-shadow: var(--shadow-card);
+
+  /* Remove any default button styling */
+  text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
-.gallery-item__image {
+.masonry-item__image {
   object-fit: cover;
   transition: transform 0.4s ease;
+  will-change: transform;
 }
 
-.gallery-item:hover .gallery-item__image {
-  transform: scale(1.04);
+/* Subtle scale effect on hover */
+.masonry-item:hover .masonry-item__image {
+  transform: scale(1.02);
 }
 
-.gallery-item__label {
+/* Dark gradient overlay (Hidden until hover) */
+.masonry-item__overlay {
   position: absolute;
-  inset: auto 0 0 0;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.6) 0%,
+      transparent 30%,
+      transparent 100%);
+  display: flex;
+  align-items: flex-end;
   padding: var(--space-md);
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-align: left;
-  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
+
+.masonry-item:hover .masonry-item__overlay {
+  opacity: 1;
+}
+
+.masonry-item__label {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Mobile optimizations */
+@media (max-width: 47.99rem) {
+  .masonry-item__overlay {
+    opacity: 1;
+    /* Always visible on mobile since there is no hover state */
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.7) 0%,
+        transparent 40%,
+        transparent 100%);
+  }
+}
+
+/*  */
 
 .lightbox {
   position: fixed;
@@ -1353,7 +1410,6 @@ main {
     transition-duration: 0.01ms !important;
   }
 
-  .gallery-item__image,
   .card,
   .site-header {
     transition-duration: 0.01ms;

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import type { GalleryImage } from "@/content/site";
@@ -10,43 +10,57 @@ type GalleryGridProps = {
   images: readonly GalleryImage[];
 };
 
+// Generates varied heights to create the authentic Masonry / Unsplash effect
+const getAspectRatio = (index: number) => {
+  const ratios = [
+    "3/4",  // Portrait
+    "4/3",  // Landscape
+    "1/1",  // Square
+    "4/5",  // Tall Portrait
+    "16/9", // Cinematic Landscape
+    "2/3",  // Very Tall Portrait
+  ];
+  return ratios[index % ratios.length];
+};
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.05 },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 300, damping: 24 }
+  },
+};
+
 export function GalleryGrid({ images }: GalleryGridProps) {
   const [lightbox, setLightbox] = useState<GalleryImage | null>(null);
   const reduced = useReducedMotion();
 
-  const container = reduced
-    ? undefined
-    : {
-        hidden: { opacity: 0 },
-        show: {
-          opacity: 1,
-          transition: { staggerChildren: 0.08 },
-        },
-      };
-
-  const item = reduced
-    ? undefined
-    : {
-        hidden: { opacity: 0, y: 16 },
-        show: { opacity: 1, y: 0 },
-      };
-
   return (
     <>
       <motion.div
-        className="gallery-grid"
-        variants={container}
+        className="masonry-grid"
+        variants={reduced ? undefined : containerVariants}
         initial={reduced ? false : "hidden"}
         whileInView={reduced ? undefined : "show"}
         viewport={{ once: true, margin: "-40px" }}
       >
-        {images.map((img) => (
+        {images.map((img, index) => (
           <motion.button
             key={img.src}
             type="button"
-            className="gallery-item"
-            variants={item}
-            whileHover={reduced ? undefined : { scale: 1.02 }}
+            className="masonry-item"
+            // Apply the pseudo-random ratio dynamically
+            style={{ aspectRatio: getAspectRatio(index) }}
+            variants={reduced ? undefined : itemVariants}
             onClick={() => setLightbox(img)}
             aria-label={`View ${img.title}`}
           >
@@ -54,14 +68,18 @@ export function GalleryGrid({ images }: GalleryGridProps) {
               src={img.src}
               alt={img.alt}
               fill
-              className="gallery-item__image"
-              sizes="(max-width: 768px) 50vw, 25vw"
+              className="masonry-item__image"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
-            <span className="gallery-item__label">{img.title}</span>
+
+            <div className="masonry-item__overlay">
+              <span className="masonry-item__label">{img.title}</span>
+            </div>
           </motion.button>
         ))}
       </motion.div>
 
+      {/* Lightbox Implementation */}
       {lightbox && (
         <div
           className="lightbox"
