@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Carousel } from "@/components/Carousel";
 import { SectionReveal } from "@/components/motion/SectionReveal";
@@ -8,8 +10,12 @@ import {
   homeTrust,
   tagline,
 } from "@/content/site";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useReducedMotion } from "@/components/motion/useReducedMotion";
 
 export default function HomePage() {
+  const reduced = useReducedMotion();
   return (
     <>
       <div className="container">
@@ -40,6 +46,54 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+          {/* Replace your motion.div with this */}
+          <motion.div
+            className="hero__visual"
+            initial={reduced ? false : { opacity: 0, y: 32, scale: 0.97 }}
+            whileInView={reduced ? undefined : { opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            viewport={{ once: true, margin: "-40px" }}
+          >
+            {/* Decorative glow ring behind the card */}
+            <div className="hero__visual-glow" aria-hidden />
+
+            {/* Floating image card */}
+            <div className="hero__image-card">
+              <div className="hero__image-wrap">
+                <Image
+                  src="/gemini.png"
+                  alt="Our clinic — a welcoming space for your care"
+                  fill
+                  className="hero__image"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+              </div>
+
+              {/* Floating trust badge */}
+              <div className="hero__image-badge">
+                <span className="hero__badge-dot" aria-hidden />
+                Book an appointment
+              </div>
+
+              {/* Subtle bottom gradient label */}
+              <div className="hero__image-label" aria-hidden>
+                <span>Established 2005 · Mumbai</span>
+              </div>
+            </div>
+
+            {/* Floating stat pill */}
+            <motion.div
+              className="hero__stat-pill"
+              initial={reduced ? false : { opacity: 0, x: 20 }}
+              whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+              viewport={{ once: true }}
+            >
+              <span className="hero__stat-pill-value">15+</span>
+              <span className="hero__stat-pill-label">Years of care</span>
+            </motion.div>
+          </motion.div>
         </section>
       </div>
 
