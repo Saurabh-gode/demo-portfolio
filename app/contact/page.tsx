@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactForm } from "@/components/ContactFormV2";
 import { SectionReveal } from "@/components/motion/SectionReveal";
 import { clinic, footer } from "@/content/site";
 
