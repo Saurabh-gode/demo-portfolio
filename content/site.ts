@@ -30,9 +30,9 @@ export const navLinks = [
 export const footer = {
   blurb: clinic.description,
   cta: "Healing begins when you stop fixing and start understanding.",
-  email: "meghanarane0704@gmail.com",
+  email: "something@gmail.com",
   phone: "+91 9930211726",
-  phones: ["+91 9930211726", "+91 9326538125"],
+  phones: ["+91 99999999", "+91 9999999"],
   address:
     "501/502, Sapphire Plaza, Dadabhai Rd, Vile Parle West, Mumbai 400 056",
   mapUrl:
