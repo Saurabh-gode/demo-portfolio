@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+import { useState } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     contactSchema,
@@ -24,8 +24,8 @@ function SubmitButton({ pending }: { pending: boolean }) {
 
 export function ContactForm() {
     const [state, setState] = useState<ContactFormState>(initialContactState);
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null); // ← store token in state
     const reduced = useReducedMotion();
-    const turnstileRef = useRef<TurnstileInstance>(null);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -38,7 +38,6 @@ export function ContactForm() {
             message: formData.get("message") as string,
         };
 
-        // Client-side validation
         const parsed = contactSchema.safeParse(raw);
         if (!parsed.success) {
             setState({
@@ -49,10 +48,8 @@ export function ContactForm() {
             return;
         }
 
-        // Turnstile check before setting loading state
-        const turnstileToken = turnstileRef.current?.getResponse();
         if (!turnstileToken) {
-            setState({ status: "error", message: "Please complete the bot check." });
+            setState({ status: "error", message: "Bot check not ready yet — please wait a moment and try again." });
             return;
         }
 
@@ -62,7 +59,7 @@ export function ContactForm() {
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...parsed.data, turnstileToken }), // ← token included
+                body: JSON.stringify({ ...parsed.data, turnstileToken }),
             });
 
             const json: { message?: string; fieldErrors?: ContactFormState["fieldErrors"] } =
@@ -82,6 +79,7 @@ export function ContactForm() {
                 message: json.message ?? "Message sent! I'll be in touch soon.",
             });
             (e.target as HTMLFormElement).reset();
+            setTurnstileToken(null); // ← reset token after successful send
         } catch {
             setState({
                 status: "error",
@@ -169,8 +167,10 @@ export function ContactForm() {
 
             {/* Turnstile lives here, in ContactForm, next to the ref it uses */}
             <Turnstile
-                ref={turnstileRef}
                 siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                onSuccess={setTurnstileToken}   // ← token captured as soon as ready
+                onExpire={() => setTurnstileToken(null)}  // ← clear if it expires
+                onError={() => setTurnstileToken(null)}   // ← clear on error
             />
 
             <SubmitButton pending={pending} />

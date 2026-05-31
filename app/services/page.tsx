@@ -1,4 +1,4 @@
-"use cache";
+
 
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/motion/SectionReveal";

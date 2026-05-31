@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import Image from "next/image";
 import { useState } from "react";
 import type { GalleryImage } from "@/content/site";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
@@ -64,10 +63,9 @@ export function GalleryGrid({ images }: GalleryGridProps) {
             onClick={() => setLightbox(img)}
             aria-label={`View ${img.title}`}
           >
-            <Image
+            <img
               src={img.src}
               alt={img.alt}
-              fill
               className="masonry-item__image"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />

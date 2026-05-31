@@ -1,10 +1,10 @@
-"use cache";
+
 
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/motion/SectionReveal";
 import { StatCounter } from "@/components/StatCounter";
 import { about, clinic, doctor } from "@/content/site";
-import Image from "next/image";
+
 
 export const metadata: Metadata = {
   title: "About",
@@ -41,13 +41,11 @@ export default async function AboutPage() {
 
             <div className="hero__image-card">
               <div className="hero__image-wrap">
-                <Image
+                <img
                   src={"/gemini.png"}
                   alt={`${doctor.name} — dermatologist in Vile Parle`}
-                  fill
                   className="hero__image"
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
                 />
               </div>
 

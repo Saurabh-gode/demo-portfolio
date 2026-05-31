@@ -13,7 +13,6 @@ import {
   tagline,
 } from "@/content/site";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
 
 const heroImage =
@@ -67,13 +66,11 @@ export default function HomePage() {
 
             <div className="hero__image-card">
               <div className="hero__image-wrap">
-                <Image
+                <img
                   src={heroImage}
                   alt={`${doctor.name} — dermatologist in Vile Parle`}
-                  fill
                   className="hero__image"
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
                 />
               </div>
 

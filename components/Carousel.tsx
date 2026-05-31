@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { carouselSlides } from "@/content/site";
 import { useReducedMotion } from "@/components/motion/useReducedMotion";
@@ -39,13 +38,11 @@ export function Carousel() {
           exit={reduced ? undefined : { opacity: 0 }}
           transition={{ duration: reduced ? 0 : 0.45 }}
         >
-          <Image
+          <img
             src={slide.src}
             alt={slide.alt}
-            fill
             className="carousel__image"
             sizes="(max-width: 768px) 100vw, 72rem"
-            priority={index === 0}
           />
           <div className="carousel__overlay">
             <h2>{slide.title}</h2>
