@@ -20,7 +20,8 @@
   --color-accent-soft: rgba(245, 119, 153, 0.09);
   --color-accent-muted: rgba(245, 119, 153, 0.55);
   --color-nav-hover: rgba(245, 119, 153, 0.08);
-  --color-hero-glow: rgba(245, 119, 153, 0.15);
+  /* --color-hero-glow: rgba(245, 119, 153, 0.15); */
+  --color-hero-glow: rgba(245, 119, 153, 0.45);
 
   /* Derived from text (#2d1822 -> 45, 24, 34) */
   --color-border: rgba(45, 24, 34, 0.08);
@@ -61,7 +62,8 @@
   --color-accent-soft: rgba(245, 119, 153, 0.12);
   --color-accent-muted: rgba(245, 119, 153, 0.45);
   --color-nav-hover: rgba(245, 119, 153, 0.08);
-  --color-hero-glow: rgba(245, 119, 153, 0.15);
+  /* --color-hero-glow: rgba(245, 119, 153, 0.15); */
+  --color-hero-glow: rgba(245, 119, 153, 0.35);
 
   /* Derived from new text color (#e2e8f0 -> 226, 232, 240) */
   --color-border: rgba(226, 232, 240, 0.08);
