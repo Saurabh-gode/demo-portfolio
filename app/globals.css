@@ -1,52 +1,82 @@
-/* ─── Light theme (default — clinical, calm) ─── */
+/* ─── Light theme (Sunset) ─── */
 :root,
 [data-theme="light"] {
-  --color-bg: #f0f4f7;
-  --color-bg-elevated: #e4ebf0;
+  /* Using a softened version of your yellow for the main background to reduce eye strain, 
+     and the true #FFF7CD for elevated elements */
+  --color-bg: #fffbf0;
+  --color-bg-elevated: #FFF7CD;
   --color-surface: #ffffff;
-  --color-surface-hover: #f8fafb;
-  --color-text: #0c1a2a;
-  --color-text-muted: #5a6d80;
-  --color-accent: #0a6e7d;
-  --color-accent-hover: #085a67;
-  --color-accent-soft: rgba(10, 110, 125, 0.1);
-  --color-accent-muted: rgba(10, 110, 125, 0.55);
-  --color-border: rgba(12, 26, 42, 0.08);
-  --color-border-strong: rgba(12, 26, 42, 0.14);
+  --color-surface-hover: #fffcf5;
+
+  /* Deep warm plum for highly readable, accessible text */
+  --color-text: #2d1822;
+  --color-text-muted: #704b5a;
+
+  /* Your deepest pink for the accent */
+  --color-accent: #F57799;
+  --color-accent-hover: #db5a7c;
+
+  /* Derived from accent (#F57799 -> 245, 119, 153) */
+  --color-accent-soft: rgba(245, 119, 153, 0.09);
+  --color-accent-muted: rgba(245, 119, 153, 0.55);
+  --color-nav-hover: rgba(245, 119, 153, 0.08);
+  --color-hero-glow: rgba(245, 119, 153, 0.15);
+
+  /* Derived from text (#2d1822 -> 45, 24, 34) */
+  --color-border: rgba(45, 24, 34, 0.08);
+  --color-border-strong: rgba(45, 24, 34, 0.14);
+  --color-overlay: rgba(45, 24, 34, 0.55);
+
   --color-error: #c53030;
   --color-success: #047857;
   --color-header-glass: rgba(255, 255, 255, 0.78);
   --color-header-glass-scrolled: rgba(255, 255, 255, 0.94);
-  --color-nav-hover: rgba(10, 110, 125, 0.08);
-  --color-hero-glow: rgba(10, 110, 125, 0.15);
-  --color-overlay: rgba(12, 26, 42, 0.55);
-  --shadow-sm: 0 1px 2px rgba(12, 26, 42, 0.05);
-  --shadow-md: 0 8px 24px rgba(12, 26, 42, 0.08);
-  --shadow-lg: 0 20px 50px rgba(12, 26, 42, 0.1);
-  --shadow-card: 0 4px 20px rgba(12, 26, 42, 0.06);
+
+  /* Shadows matching the new warm plum text color */
+  --shadow-sm: 0 1px 2px rgba(45, 24, 34, 0.05);
+  --shadow-md: 0 8px 24px rgba(45, 24, 34, 0.08);
+  --shadow-lg: 0 20px 50px rgba(45, 24, 34, 0.1);
+  --shadow-card: 0 4px 20px rgba(45, 24, 34, 0.06);
 }
 
 /* ─── Dark theme ─── */
 [data-theme="dark"] {
-  --color-bg: #080d14;
-  --color-bg-elevated: #0f1722;
-  --color-surface: #151f2e;
-  --color-surface-hover: #1a2738;
-  --color-text: #e8eef4;
-  --color-text-muted: #8fa3b8;
-  --color-accent: #4ec4d4;
-  --color-accent-hover: #6ed4e2;
-  --color-accent-soft: rgba(78, 196, 212, 0.12);
-  --color-accent-muted: rgba(78, 196, 212, 0.5);
-  --color-border: rgba(232, 238, 244, 0.08);
-  --color-border-strong: rgba(232, 238, 244, 0.14);
+  /* Rich, warm aubergine/blackberry backgrounds */
+  --color-bg: #1a0f14;
+  --color-bg-elevated: #26151d;
+  --color-surface: #2b1822;
+  --color-surface-hover: #361f2b;
+
+  /* Using your lightest palette colors for text! */
+  --color-text: #FFF7CD;
+  /* Pale Yellow */
+  --color-text-muted: #FDC3A1;
+  /* Light Peach */
+
+  /* Using your coral/salmon for dark mode accents */
+  --color-accent: #FB9B8F;
+  --color-accent-hover: #ffad9f;
+
+  /* Derived from accent (#FB9B8F -> 251, 155, 143) */
+  --color-accent-soft: rgba(251, 155, 143, 0.12);
+  --color-accent-muted: rgba(251, 155, 143, 0.5);
+  --color-nav-hover: rgba(251, 155, 143, 0.1);
+  --color-hero-glow: rgba(251, 155, 143, 0.12);
+
+  /* Derived from text (#FFF7CD -> 255, 247, 205) */
+  --color-border: rgba(255, 247, 205, 0.08);
+  --color-border-strong: rgba(255, 247, 205, 0.14);
+
   --color-error: #f87171;
   --color-success: #34d399;
-  --color-header-glass: rgba(15, 23, 34, 0.82);
-  --color-header-glass-scrolled: rgba(15, 23, 34, 0.96);
-  --color-nav-hover: rgba(78, 196, 212, 0.1);
-  --color-hero-glow: rgba(78, 196, 212, 0.12);
+
+  /* Derived from surface (#2b1822 -> 43, 24, 34) */
+  --color-header-glass: rgba(43, 24, 34, 0.82);
+  --color-header-glass-scrolled: rgba(43, 24, 34, 0.96);
+
   --color-overlay: rgba(0, 0, 0, 0.65);
+
+  /* Shadows remain pure black for depth in dark mode */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.45);
@@ -334,7 +364,7 @@ main {
 }
 
 .section {
-  padding-block: var(--space-3xl);
+  padding-block: var(--space-2xl);
 }
 
 .section--tight-top {
@@ -712,6 +742,98 @@ main {
   line-height: 1;
 }
 
+/* ─── Header Eyebrow (Stacked Pill) ─── */
+/* ─── Ensure Main Header is on Top ─── */
+.site-header {
+  z-index: 2;
+  /* Add this to your existing .site-header block if not there */
+}
+
+/* ─── Header Utility Drawer (Bottom Eyebrow) ─── */
+.site-header__eyebrow {
+  display: none;
+  /* Hidden on mobile to keep interface clean */
+  position: relative;
+
+  /* Slightly narrower than the main header for a nice stepped silhouette */
+  width: calc(100% - var(--space-xl) * 4);
+  max-width: calc(var(--container-max) - 4rem);
+
+  /* Layering magic: Pull it up behind the main header */
+  z-index: 1;
+  margin-top: -1.25rem;
+  padding: 1.25rem var(--space-xl) 0.35rem;
+  /* Top padding compensates for the overlap */
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: none;
+  /* Seamless integration with the main header */
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  /* Rounded bottom only */
+  box-shadow: var(--shadow-sm);
+
+  /* Refined Typography */
+  font-size: 0.725rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  /* Animation sync */
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease;
+  will-change: transform, opacity;
+}
+
+/* Sync conceal animation distance with the main header */
+.site-header__eyebrow.site-header--concealed {
+  transform: translateY(calc(-100% - var(--space-md) - 1.5rem));
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Internal Layout */
+.eyebrow__contact {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color var(--transition);
+}
+
+.eyebrow__contact:hover {
+  color: var(--color-accent);
+}
+
+.eyebrow__socials {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.eyebrow__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: color var(--transition), transform 0.2s ease;
+}
+
+.eyebrow__social-link:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Reveal only on larger screens */
+@media (min-width: 48rem) {
+  .site-header__eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
 /* ─── Footer ─── */
 .site-footer {
   margin-top: var(--space-3xl);
@@ -741,6 +863,13 @@ main {
   font-size: 0.9375rem;
   line-height: 1.65;
   max-width: 28ch;
+}
+
+.site-footer__cta {
+  margin-top: var(--space-md) !important;
+  font-style: italic;
+  color: var(--color-accent) !important;
+  max-width: 32ch !important;
 }
 
 .site-footer ul {
@@ -867,13 +996,29 @@ main {
   font-size: 1.125rem;
   font-weight: 500;
   color: var(--color-accent);
+  margin: 0 0 var(--space-xs);
+}
+
+.hero__specialty {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
   margin: 0 0 var(--space-md);
 }
 
 .hero p.hero__tagline {
-  color: var(--color-text-muted);
-  font-size: 1.125rem;
+  color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: 500;
   max-width: 42ch;
+  margin: 0 auto var(--space-sm);
+  line-height: 1.5;
+}
+
+.hero__subtagline {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  max-width: 48ch;
   margin: 0 auto var(--space-xl);
   line-height: 1.7;
 }
@@ -1190,6 +1335,96 @@ main {
   line-height: 1.75;
 }
 
+.prose--centered {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* ─── Services categories ─── */
+.service-categories {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.service-category__header {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-start;
+  margin-bottom: var(--space-lg);
+}
+
+.service-category__header h2 {
+  margin: 0 0 var(--space-xs);
+  font-size: 1.375rem;
+}
+
+.service-category__tagline {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.service-category__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+}
+
+.service-category__list li {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--color-text);
+}
+
+/* ─── FAQ ─── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 48rem;
+}
+
+.faq-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.faq-item__question {
+  padding: var(--space-lg);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  color: var(--color-text);
+}
+
+.faq-item__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item[open] .faq-item__question {
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item__answer {
+  margin: 0;
+  padding: var(--space-lg);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  font-size: 0.9375rem;
+}
+
 .doctor-card {
   display: flex;
   gap: var(--space-xl);
@@ -1199,7 +1434,7 @@ main {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-sm);
 }
 
 .doctor-card__avatar {
@@ -1325,6 +1560,10 @@ main {
   }
 
   .hero p.hero__tagline {
+    margin-inline: 0;
+  }
+
+  .hero__subtagline {
     margin-inline: 0;
   }
 }

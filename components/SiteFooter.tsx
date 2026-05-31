@@ -9,6 +9,7 @@ export function SiteFooter() {
         <div className="site-footer__brand">
           <h4>{siteName}</h4>
           <p>{footer.blurb}</p>
+          <p className="site-footer__cta">{footer.cta}</p>
         </div>
 
         <div>
@@ -28,11 +29,11 @@ export function SiteFooter() {
             <li>
               <a href={`mailto:${footer.email}`}>{footer.email}</a>
             </li>
-            <li>
-              <a href={`tel:${footer.phone.replace(/\s/g, "")}`}>
-                {footer.phone}
-              </a>
-            </li>
+            {footer.phones.map((phone) => (
+              <li key={phone}>
+                <a href={`tel:${phone.replace(/\s/g, "")}`}>{phone}</a>
+              </li>
+            ))}
             <li>{footer.address}</li>
           </ul>
         </div>

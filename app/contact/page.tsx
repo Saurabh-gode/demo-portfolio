@@ -5,7 +5,7 @@ import { clinic, footer } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Book an appointment or reach ${clinic.name}.`,
+  description: `Book an appointment with ${clinic.shortName} at Tvameva Aesthetics, Vile Parle West.`,
 };
 
 export default function ContactPage() {
@@ -15,23 +15,23 @@ export default function ContactPage() {
         <span className="eyebrow">Get in touch</span>
         <h1 className="section-title">Contact us</h1>
         <p className="section-lead">
-          Request an appointment or send us a message — our team responds within
-          one business day.
+          Request an appointment or send us a message — we respond as soon as
+          possible during clinic hours.
         </p>
       </SectionReveal>
 
       <div className="contact-grid">
         <SectionReveal>
           <div className="contact-info">
-            <h3>Clinic details</h3>
+            <h3>Tvameva Aesthetics</h3>
 
             <div className="contact-info__block">
               <strong>Phone</strong>
-              <p>
-                <a href={`tel:${footer.phone.replace(/\s/g, "")}`}>
-                  {footer.phone}
-                </a>
-              </p>
+              {footer.phones.map((phone) => (
+                <p key={phone}>
+                  <a href={`tel:${phone.replace(/\s/g, "")}`}>{phone}</a>
+                </p>
+              ))}
             </div>
 
             <div className="contact-info__block">
@@ -43,7 +43,11 @@ export default function ContactPage() {
 
             <div className="contact-info__block">
               <strong>Address</strong>
-              <p>{footer.address}</p>
+              <p>
+                <a href={footer.mapUrl} target="_blank" rel="noopener noreferrer">
+                  {footer.address}
+                </a>
+              </p>
             </div>
 
             <div className="contact-info__block">
@@ -56,7 +60,7 @@ export default function ContactPage() {
             </div>
 
             <p className="contact-info__note">
-              For medical emergencies, please call 911 or go to your nearest
+              For medical emergencies, please visit your nearest hospital
               emergency department. This form is not monitored 24/7.
             </p>
           </div>

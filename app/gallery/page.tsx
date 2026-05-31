@@ -7,7 +7,7 @@ import { clinic, galleryImages } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Our Clinic",
-  description: `Tour the facilities at ${clinic.name}.`,
+  description: `Tour Tvameva Aesthetics — ${clinic.shortName}'s clinic in Vile Parle West, Mumbai.`,
 };
 
 export default async function GalleryPage() {
@@ -15,10 +15,11 @@ export default async function GalleryPage() {
     <div className="container section">
       <SectionReveal>
         <span className="eyebrow">Facilities</span>
-        <h1 className="section-title">Our clinic</h1>
+        <h1 className="section-title">A glimpse into our care</h1>
         <p className="section-lead">
-          A welcoming, hygienic environment designed for comfort, privacy, and
-          efficient care — from reception through consultation.
+          Tvameva Aesthetics in Vile Parle West offers a calm, hygienic environment
+          designed for comfort, privacy, and thoughtful dermatology care — from
+          consultation through treatment.
         </p>
       </SectionReveal>
 

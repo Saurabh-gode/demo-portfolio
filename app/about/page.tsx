@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { SectionReveal } from "@/components/motion/SectionReveal";
 import { StatCounter } from "@/components/StatCounter";
 import { about, clinic, doctor } from "@/content/site";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
@@ -16,7 +17,6 @@ export default async function AboutPage() {
       <SectionReveal>
         <span className="eyebrow">Our physician</span>
         <h1 className="section-title">{about.headline}</h1>
-
         <div className="doctor-card">
           <div className="doctor-card__avatar" aria-hidden>
             ⚕
@@ -30,11 +30,46 @@ export default async function AboutPage() {
           </div>
         </div>
 
-        <div className="prose">
-          {about.paragraphs.map((p) => (
-            <p key={p.slice(0, 24)}>{p}</p>
-          ))}
+        <div className="hero about">
+          <div className="prose">
+            {about.paragraphs.map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+          </div>
+          <div className="hero__visual">
+            <div className="hero__visual-glow" aria-hidden />
+
+            <div className="hero__image-card">
+              <div className="hero__image-wrap">
+                <Image
+                  src={"/gemini.png"}
+                  alt={`${doctor.name} — dermatologist in Vile Parle`}
+                  fill
+                  className="hero__image"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+              </div>
+
+              <div className="hero__image-badge">
+                <span className="hero__badge-dot" aria-hidden />
+                {doctor.name}
+              </div>
+
+              <div className="hero__image-label" aria-hidden>
+                <span>{clinic.location}</span>
+              </div>
+            </div>
+
+            <div
+              className="hero__stat-pill"
+            >
+              <span className="hero__stat-pill-value">8,000+</span>
+              <span className="hero__stat-pill-label">Patients treated</span>
+            </div>
+          </div>
         </div>
+
       </SectionReveal>
 
       <SectionReveal className="section section--tight-top">

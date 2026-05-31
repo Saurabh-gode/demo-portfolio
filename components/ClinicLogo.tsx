@@ -29,7 +29,7 @@ export function ClinicLogo({ className = "" }: ClinicLogoProps) {
       </span>
       <span className="clinic-logo__text">
         <span className="clinic-logo__name">{clinic.shortName}</span>
-        <span className="clinic-logo__suffix">Medical</span>
+        <span className="clinic-logo__suffix">Aesthetics</span>
       </span>
     </Link>
   );
