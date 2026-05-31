@@ -39,48 +39,48 @@
   --shadow-card: 0 4px 20px rgba(45, 24, 34, 0.06);
 }
 
-/* ─── Dark theme ─── */
+/* ─── Dark theme (Midnight Slate) ─── */
 [data-theme="dark"] {
-  /* Rich, warm aubergine/blackberry backgrounds */
-  --color-bg: #1a0f14;
-  --color-bg-elevated: #26151d;
-  --color-surface: #2b1822;
-  --color-surface-hover: #361f2b;
+  /* 1. BACKGROUNDS: Deep, cool slate/blue-gray. 
+     Zero brown undertones. Pink accents pop beautifully against these cool tones. */
+  --color-bg: #0b0f19;
+  --color-bg-elevated: #161b26;
+  --color-surface: #10141f;
+  --color-surface-hover: #1a202f;
 
-  /* Using your lightest palette colors for text! */
-  --color-text: #FFF7CD;
-  /* Pale Yellow */
-  --color-text-muted: #FDC3A1;
-  /* Light Peach */
+  /* 2. TEXT: Crisp, cool-toned white to match the slate backgrounds. */
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
 
-  /* Using your coral/salmon for dark mode accents */
-  --color-accent: #FB9B8F;
-  --color-accent-hover: #ffad9f;
+  /* 3. ACCENT: Your signature Light Mode pink. 
+     Warm pink against cool slate creates a stunning, premium contrast. */
+  --color-accent: #F57799;
+  --color-accent-hover: #ff94b1;
 
-  /* Derived from accent (#FB9B8F -> 251, 155, 143) */
-  --color-accent-soft: rgba(251, 155, 143, 0.12);
-  --color-accent-muted: rgba(251, 155, 143, 0.5);
-  --color-nav-hover: rgba(251, 155, 143, 0.1);
-  --color-hero-glow: rgba(251, 155, 143, 0.12);
+  /* Derived from accent (#F57799 -> 245, 119, 153) */
+  --color-accent-soft: rgba(245, 119, 153, 0.12);
+  --color-accent-muted: rgba(245, 119, 153, 0.45);
+  --color-nav-hover: rgba(245, 119, 153, 0.08);
+  --color-hero-glow: rgba(245, 119, 153, 0.15);
 
-  /* Derived from text (#FFF7CD -> 255, 247, 205) */
-  --color-border: rgba(255, 247, 205, 0.08);
-  --color-border-strong: rgba(255, 247, 205, 0.14);
+  /* Derived from new text color (#e2e8f0 -> 226, 232, 240) */
+  --color-border: rgba(226, 232, 240, 0.08);
+  --color-border-strong: rgba(226, 232, 240, 0.14);
 
-  --color-error: #f87171;
-  --color-success: #34d399;
+  --color-error: #ef4444;
+  --color-success: #10b981;
 
-  /* Derived from surface (#2b1822 -> 43, 24, 34) */
-  --color-header-glass: rgba(43, 24, 34, 0.82);
-  --color-header-glass-scrolled: rgba(43, 24, 34, 0.96);
+  /* Derived from surface (#10141f -> 16, 20, 31) */
+  --color-header-glass: rgba(16, 20, 31, 0.82);
+  --color-header-glass-scrolled: rgba(16, 20, 31, 0.96);
 
-  --color-overlay: rgba(0, 0, 0, 0.65);
+  --color-overlay: rgba(0, 0, 0, 0.7);
 
   /* Shadows remain pure black for depth in dark mode */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.45);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
 /* ─── Shared tokens ─── */
@@ -201,13 +201,26 @@ main {
 /* Ambient glow behind the card */
 .hero__visual-glow {
   position: absolute;
-  inset: -10%;
+  /* 1. Expand the glow further outside the card bounds */
+  inset: -25%; 
   border-radius: 50%;
-  background: radial-gradient(ellipse 70% 60% at 55% 50%,
-      var(--color-accent-soft),
-      transparent 70%);
-  z-index: 0;
+  
+  /* 2. Use 'muted' instead of 'soft' for better visibility, and change to a circle */
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--color-accent-muted), 
+    transparent 65%
+  );
+  
+  /* 3. The secret to a modern UI glow: a heavy blur */
+  filter: blur(40px); 
+  
+  /* 4. Ensure it sits firmly behind everything in the visual container */
+  z-index: -1; 
   pointer-events: none;
+  
+  /* 5. Optional: Add a slow pulse animation for extra flair */
+  animation: hero-glow-pulse 6s ease-in-out infinite alternate;
 }
 
 /* Main floating card */
@@ -295,6 +308,17 @@ main {
   50% {
     opacity: 0.55;
     transform: scale(0.85);
+  }
+}
+
+@keyframes hero-glow-pulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
   }
 }
 
