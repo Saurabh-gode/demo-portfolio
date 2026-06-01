@@ -627,6 +627,8 @@ main {
 .clinic-logo__mark {
   display: flex;
   color: var(--color-accent);
+  width: 32px;
+  height: 32px;
 }
 
 .clinic-logo__text {
